@@ -78,7 +78,7 @@ Dependencies for this project are managed using a requirements.txt file, which i
   python -m app
 ```
 
-#### 07. Access the API at http://127.0.0.1:5000/
+#### 07. Access the App at http://127.0.0.1:5000/
 
 ## Question_02
 
