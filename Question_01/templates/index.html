@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referral Relationship</title>
+   
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="max-w-2xl mx-auto py-12">
+        <h1 class="text-3xl font-bold text-center mb-8">Referral Relationship</h1>
+        <form class="flex items-center justify-center mb-8" method="POST">
+            <label for="email" class="mr-2">Enter Email:</label>
+            <input type="email" id="email" name="email" required class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-blue-500">
+            <button type="submit" class="ml-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Submit</button>
+        </form>
+        {% if email %}
+        <h2 class="text-2xl font-semibold text-center mb-4">Referral Relationship for {{ email }}:</h2>
+        <ul class="bg-white shadow overflow-hidden rounded-md">
+            {% for referrer in referral_relationship %}
+            <li class="px-4 py-3 border-b border-gray-200">{{ referrer }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+</html>

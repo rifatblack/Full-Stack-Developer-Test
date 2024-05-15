@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get User Info</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Include configuration file -->
+    <script src="api_config.js" defer></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white shadow-md rounded-md p-8 w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-4">Get User Info</h1>
+        <div class="mb-4">
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Enter Email:</label>
+            <input type="text" id="email" class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:ring-blue-400">
+        </div>
+        <button onclick="getUserInfo()" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md w-full focus:outline-none focus:ring focus:ring-blue-400">Get Info</button>
+        <div id="result" class="mt-4"></div>
+    </div>
+
+    <script>
+        function getUserInfo() {
+            var email = document.getElementById('email').value;
+            fetch(`${API_URL}/get_info`, { // API_URL is from api_config.js
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({email: email})
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('result').innerHTML = '<p class="text-red-600">' + data.error + '</p>';
+                } else {
+                    document.getElementById('result').innerHTML = '<p class="text-green-600">Name: ' + data.name + '</p><p class="text-green-600">Points: ' + data.points + '</p>';
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
