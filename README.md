@@ -80,47 +80,6 @@ Dependencies for this project are managed using a requirements.txt file, which i
 
 #### 07. Access the API at http://127.0.0.1:5000/
 
-## Installation
-
-#### 01. Changes the directory to "Question_01"
-
-```bash
-  cd Question_01
-```
-
-#### 02. Installs the virtualenv package, which is used to create isolated Python environments.
-
-```bash
-  pip install virtualenv
-```
-
-#### 03. Creates a new virtual environment named "env" in the current directory
-
-```bash
-  virtualenv env
-```
-
-#### 04. Activates the virtual environment
-
-```bash
-  Mac OS / Linux: source mypython/bin/activate
-  windows (cmd): env\Scripts\activate
-```
-
-#### 05. Installs the Python packages listed in the "requirements.txt" file
-
-```bash
-  pip install -r requirements.txt
-```
-
-#### 06. Runs the application
-
-```bash
-  python -m app
-```
-
-#### 07. Access the API at http://127.0.0.1:5000/
-
 ## Question_02
 
 This Flask application serves as a backend API for retrieving user information based on their email address. Here's a brief explanation of how it works:

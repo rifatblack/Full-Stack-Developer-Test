@@ -6,13 +6,13 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///clients.db'
 db = SQLAlchemy(app)
 
-# Define Client model
+
 class Client(db.Model):
     __tablename__ = 'clients'
     client_email = db.Column(db.String(120), primary_key=True)
     referral_email = db.Column(db.String(120))
 
-# Function to read client data from a CSV file and insert into the database
+
 def insert_clients_from_csv(filename):
     with open(filename, 'r') as file:
         reader = csv.reader(file)
@@ -25,7 +25,6 @@ def insert_clients_from_csv(filename):
     db.session.commit()
 
 
-# Function to retrieve referral relationship for a given email
 def get_referral_relationship(email):
     relationship = []
 
@@ -38,7 +37,7 @@ def get_referral_relationship(email):
     traverse(email)
     return relationship
 
-# Route to display referral relationship
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
